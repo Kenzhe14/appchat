@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Чат-приложение с использованием Go, Gin, PostgreSQL, RabbitMQ и React"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <title>Чат-приложение</title>
+    <style>
+      #error-display {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #f44336;
+        color: white;
+        padding: 15px;
+        z-index: 9999;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="error-display"></div>
+    <noscript>Для работы этого приложения необходимо включить JavaScript.</noscript>
+    <div id="root"></div>
+    <script>
+      // Перехватываем ошибки
+      window.onerror = function(message, source, lineno, colno, error) {
+        const errorDiv = document.getElementById('error-display');
+        errorDiv.style.display = 'block';
+        errorDiv.innerHTML = `<strong>Ошибка:</strong> ${message}<br>
+                              <strong>Файл:</strong> ${source}<br>
+                              <strong>Строка:</strong> ${lineno}:${colno}`;
+        console.error('Перехваченная ошибка:', error);
+        return true;
+      };
+    </script>
+  </body>
+</html> 
